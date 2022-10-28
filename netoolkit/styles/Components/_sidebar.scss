@@ -1,0 +1,75 @@
+@use '../Helpers/variables' as v;
+@use '../Helpers/mixins' as m; 
+.nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    color: white;
+    background-color: v.$main;
+    grid-column: 1/4;
+    gap: 5rem;
+
+    &__logo {
+        transform: translateY(3rem)
+    }
+
+    &__list {
+            @include m.flex( true , 2rem); 
+            justify-content: flex-end;
+            align-items: center;
+            width: 80%;
+            align-self: flex-end;
+          
+        &__item{ 
+            @include m.flex(false, 2rem);
+            justify-content: flex-start;
+            align-items: center;
+            font-size: v.$textFont;
+            width: 100%;
+            cursor: pointer;
+            &__title {
+                font-weight: 400;
+            }
+        }
+
+        &__itemActive {
+            @include m.flex(false, 2rem);
+            justify-content: flex-start;
+            align-items: center;
+            font-size: v.$textFont;
+            background-color: white;
+            color: v.$main;
+            width: 115%;
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+            height: 4rem;
+            position: relative;
+            padding-left: 1.2rem;
+            
+            &::before {
+                content: '';
+                position: absolute;
+                height: 50px;
+                width: 50px;
+                background-color: transparent;
+                top: -75%;
+                right:7%; 
+                border-radius: 50%;
+                box-shadow: 35px 35px 0 10px white;
+            }
+                        &::after {
+                            content: '';
+                            position: absolute;
+                            height: 50px;
+                            width: 50px;
+                            background-color: transparent;
+                            bottom: -75%;
+                            right: 7%;
+                            border-radius: 50%;
+                            box-shadow: 35px -35px 0 10px white;
+                        }
+        }
+    }
+}
+

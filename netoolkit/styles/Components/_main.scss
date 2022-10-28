@@ -1,0 +1,9 @@
+@use '../Helpers/variables' as v;
+.main {
+    display: grid;
+    grid-template-columns: repeat(14 , 1fr);
+    min-height: 100vh;
+    background-color: v.$main;
+    padding: 1rem;
+    padding-left: 0;
+}
