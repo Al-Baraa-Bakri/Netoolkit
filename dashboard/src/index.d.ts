@@ -1,0 +1,1 @@
+declare module 'ntk_ui/Button';

@@ -1,0 +1,22 @@
+.ntk-button {
+    background-color: #4CAF50;
+    /* Green background */
+    border: none;
+    /* Remove borders */
+    color: white;
+    /* White text */
+    padding: 12px 24px;
+    /* Some padding */
+    text-align: center;
+    /* Center text */
+    text-decoration: none;
+    /* Remove underline */
+    display: inline-block;
+    /* Make it an inline element */
+    font-size: 16px;
+    /* Set font size */
+    cursor: pointer;
+    /* Add cursor on hover */
+    border-radius: 4px;
+    /* Add rounded corners */
+}
