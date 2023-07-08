@@ -1,6 +1,5 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
-const { FederatedTypesPlugin } = require("@module-federation/typescript");
 
 const deps = require("./package.json").dependencies;
 
@@ -67,10 +66,6 @@ module.exports = (_, argv) => ({
 
   plugins: [
     new ModuleFederationPlugin(federationConfig),
-    new FederatedTypesPlugin({
-      federationConfig,
-      // ...
-    }),
     new HtmlWebPackPlugin({
       template: "./src/index.html",
     }),

@@ -1,0 +1,5 @@
+@use '../../style/variables' as v;
+.ntk-btn {
+    width: 500px;
+    border-radius: v.$rounded-main;
+}

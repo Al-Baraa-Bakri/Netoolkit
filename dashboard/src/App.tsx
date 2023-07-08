@@ -4,9 +4,11 @@ import './index.d';
 import  Button  from 'ntk_ui/Button';
 import "./index.scss";
 
-const App = () => (
+const App = () => {
+  return (
   <div className="mt-10 text-3xl mx-auto max-w-6xl">
-    <Button />
+    <Button label={ "BTN" }/>
   </div>
-);
+  )
+}
 ReactDOM.render(<App />, document.getElementById("app"));

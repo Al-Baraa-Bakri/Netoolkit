@@ -1,12 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Button from "./Components/Button/Button";
-
-import "./index.css";
+import "./index.scss";
 
 const App = () => (
   <div className="container">
-    <Button />
+    <Button label="NTK-BTN"/>
   </div>
 );
 ReactDOM.render(<App />, document.getElementById("app"));
