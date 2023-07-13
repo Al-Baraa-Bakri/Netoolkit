@@ -1,0 +1,33 @@
+<svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="mdi:local-area-network" clip-path="url(#clip0_1029_1342)">
+<g id="new_logo">
+<path id="Vector 3125" d="M2.12769 5.34747L10.5044 0.520996L18.8726 5.34747V15.0167L10.5044 19.8639L2.12769 15.0555V5.34747Z" fill="white" stroke="url(#paint0_linear_1029_1342)" stroke-linejoin="bevel"/>
+<g id="Vector 3124" filter="url(#filter0_i_1029_1342)">
+<path d="M14.0084 7.58735V14.1824L12.5629 15.2063V6.26235L11.1475 5.3288L8.40712 6.95496M11.2981 6.77428L8.40712 8.67147V13.55M8.61793 5.17822L6.9917 6.26235V14.1824L8.40712 15.0557M9.85255 15.0557V9.5749L11.1475 8.67147L11.2981 14.1824" stroke="url(#paint1_linear_1029_1342)" stroke-width="0.904388" stroke-linecap="round" stroke-linejoin="bevel"/>
+</g>
+</g>
+</g>
+<defs>
+<filter id="filter0_i_1029_1342" x="6.53955" y="4.72595" width="7.9209" height="11.2111" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="0.361755"/>
+<feGaussianBlur stdDeviation="0.180878"/>
+<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+<feBlend mode="normal" in2="shape" result="effect1_innerShadow_1029_1342"/>
+</filter>
+<linearGradient id="paint0_linear_1029_1342" x1="10.5001" y1="0.520996" x2="10.5001" y2="19.8639" gradientUnits="userSpaceOnUse">
+<stop stop-color="#6680D9"/>
+<stop offset="1" stop-color="#123597"/>
+</linearGradient>
+<linearGradient id="paint1_linear_1029_1342" x1="10.5" y1="5.17822" x2="10.5" y2="15.2063" gradientUnits="userSpaceOnUse">
+<stop stop-color="#6680D9"/>
+<stop offset="1" stop-color="#123597"/>
+</linearGradient>
+<clipPath id="clip0_1029_1342">
+<rect width="20" height="20" fill="white" transform="translate(0.5 0.192383)"/>
+</clipPath>
+</defs>
+</svg>

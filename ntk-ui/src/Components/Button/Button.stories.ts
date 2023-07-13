@@ -5,25 +5,14 @@ const meta: Meta<typeof Button> = {
     title: 'Components/Button', 
     component: Button, 
     tags: ['autodocs'],
-}
-
-export default meta; 
-
-type Story = StoryObj<typeof Button>; 
-
-export const Primary: Story = {
-    args: {
-        color: 'primary', 
-        label: 'Our Button'
-    }, 
-    argTypes: {
+        argTypes: {
         color: {
             control: false
         },
         size: {
             control: {
                 type:'select', 
-                options: ['large' , 'medium' , 'small' , 'flex']
+                options: ['large' , 'medium' , 'small']
             }
         },
         
@@ -36,5 +25,33 @@ export const Primary: Story = {
     }
 }
 
+export default meta; 
 
+type Story = StoryObj<typeof Button>; 
+
+export const Primary: Story = {
+    args: {
+        color: 'primary', 
+        label: 'Our Button', 
+
+    }, 
+}
+
+export const Secondary: Story = {
+    args: {
+        color: 'secondary', 
+        label: 'Our Button',
+
+    }, 
+
+}
+
+export const Danger: Story = {
+    args: {
+        color: 'danger', 
+        label: 'Our Button', 
+
+    }, 
+
+}
 
