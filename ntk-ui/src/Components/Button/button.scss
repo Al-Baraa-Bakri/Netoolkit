@@ -1,0 +1,86 @@
+@use '../../style/variables' as v;
+.ntk-btn {
+    border: none;
+    outline: none;
+    border-radius: v.$rounded-main;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    &__primary {
+        background-color: v.$color-btn-primary;
+        color: white;
+
+        &__text {
+            background-color: transparent;
+            border: none;
+        }
+
+        &__outlined {
+            border: 1px solid v.$color-btn-primary;
+            color: v.$color-btn-primary;
+            background-color: transparent;
+            &:hover {
+                background-color: v.$color-btn-primary;
+                color: white;
+            }
+        }
+    }
+    &__secondary {
+        background-color: v.$color-btn-secondary;
+        color: v.$color-btn-primary;
+        &__text {
+                background-color: transparent;
+                border: none;
+        }
+        &__outlined {
+            border: 1px solid v.$color-btn-secondary;
+            color: v.$color-btn-secondary;
+            background-color: transparent;
+
+            &:hover {
+                background-color: v.$color-btn-secondary;
+                color: v.$color-btn-primary;
+            }
+        }
+    }
+    &__danger {
+        background-color: v.$color-btn-danger;
+        color: white;
+        &__text {
+                background-color: transparent;
+                border: none;
+            }
+        &__outlined {
+            border: 1px solid v.$color-btn-danger;
+            color: v.$color-btn-danger;
+            background-color: transparent;
+
+            &:hover {
+                background-color: v.$color-btn-danger;
+                color: white;
+            }
+        }
+    }
+    &__small {
+        height: 32px;
+        width: 96px;
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+    &__medium {
+        height: 34px;
+        width: 128px;
+        padding: 12px 16px;
+        font-size: 14px;
+    }
+    &__large {
+        height: 42px;
+        width: 192px;
+        padding: 16px 24px;
+        font-size: 16px;
+    }
+    &__flex {
+        width: 100%;   
+    }
+}
