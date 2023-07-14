@@ -9,7 +9,8 @@ import { createTheme } from '@mui/material/styles'
 import { ThemeProvider } from '@mui/styles'
 import { Provider } from 'react-redux';
 import { store } from './Store/store'
-
+import { Auth0ProviderWithNavigate } from './Layers/Auth0ProviderWithNavigate'
+import AuthLayer from './Layers/AuthLayer'
   const theme = createTheme({
   typography: {
     'fontFamily': [
@@ -21,16 +22,19 @@ import { store } from './Store/store'
 
 function App() {
   const [count, setCount] = useState(0)
-
   return (
     <ThemeProvider theme={theme}>
       <Provider store={store}>
-       <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Netx />} />
-          <Route path="graph" element={<Graph />} />
-        </Route>  
-      </Routes>
+        <Auth0ProviderWithNavigate>
+          <AuthLayer>
+            <Routes>
+              <Route path="/" element={<Layout />}>
+                <Route index element={<Netx />} />
+                <Route path="graph" element={<Graph />} />
+              </Route>  
+            </Routes>
+          </AuthLayer>
+        </Auth0ProviderWithNavigate>
       </Provider>
     </ThemeProvider>
   )
