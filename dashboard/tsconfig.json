@@ -103,6 +103,6 @@
       "*": ["./@mf-types/*"]
     }
   },
-  "include": ["src"],
+  "include": ["src", "../application/src/Components"],
   "exclude": ["node_modules"]
 }

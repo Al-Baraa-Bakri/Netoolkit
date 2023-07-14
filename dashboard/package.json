@@ -10,8 +10,8 @@
   },
   "license": "MIT",
   "author": {
-    "name": "Jack Herrington",
-    "email": "jherr@pobox.com"
+    "name": "Al-Baraa Bakri",
+    "email": "baraa.bakri963@gmail.com"
   },
   "devDependencies": {
     "@babel/core": "^7.15.8",
@@ -28,6 +28,7 @@
     "postcss": "^8.2.1",
     "postcss-loader": "^4.1.0",
     "style-loader": "^3.3.0",
+    "svg-loader": "^0.0.2",
     "tailwindcss": "^2.0.2",
     "typescript": "^4.5.2",
     "webpack": "^5.57.1",
@@ -35,8 +36,11 @@
     "webpack-dev-server": "^4.3.1"
   },
   "dependencies": {
+    "@material-ui/core": "^4.12.4",
+    "@material-ui/icons": "^4.11.3",
     "@module-federation/typescript": "^2.3.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.14.1"
   }
 }
