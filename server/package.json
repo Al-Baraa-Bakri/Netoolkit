@@ -2,6 +2,7 @@
   "name": "ntk_server",
   "version": "1.0.0",
   "description": "Backend for Netoolkit project",
+  "type": "module",
   "main": "index.ts",
   "scripts": {
     "dev": "nodemon index.ts",
