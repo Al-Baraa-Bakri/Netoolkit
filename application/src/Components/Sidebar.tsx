@@ -26,6 +26,8 @@ import { Avatar, Badge, InputBase } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { useSelector , useDispatch } from 'react-redux';
+import {  openSidebar , closeSidebar } from '../Store/store';
 type SidebarItems = {
   title: string, 
   icon: string
@@ -100,27 +102,30 @@ export default function Sidebar({children}) {
     }, 
   ]
   
-  const [open, setOpen] = React.useState(false);
+  // const [open, setOpen] = React.useState(false);
+  const dispatch = useDispatch();
 
-  const handleDrawerOpen = () => {
-    setOpen(true);
+  const isSidebarOpen = useSelector((state: any) => state.sidebar.isSidebarOpen); 
+
+  const handleDrawerOpen = () => {    
+    dispatch(openSidebar());
   };
 
   const handleDrawerClose = () => {
-    setOpen(false);
+    dispatch(closeSidebar())
   };
 
   return (
     <Box sx={{ display: 'flex'}}>
       <CssBaseline />
-      <AppBar position="fixed" open={open} sx={{backgroundColor: "#6680D9" }}>
+      <AppBar position="fixed" open={isSidebarOpen} sx={{backgroundColor: "#6680D9" }}>
         <Toolbar>
           <IconButton
             color="inherit"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
-            sx={{ mr: 2, ...(open && { display: 'none' }) }}
+            sx={{ mr: 2, ...(isSidebarOpen && { display: 'none' }) }}
           >
             <MenuIcon />
           </IconButton>
@@ -157,7 +162,7 @@ export default function Sidebar({children}) {
         }}
         variant="persistent"
         anchor="left"
-        open={open}
+        open={isSidebarOpen}
       >
         <DrawerHeader sx={{justifyContent: 'space-between' , alignItems: 'center'}}>
           <img src={Logo} alt='Logo'/>
@@ -177,7 +182,7 @@ export default function Sidebar({children}) {
           ))}
         </List>
       </Drawer>
-      <Main open={open} sx={{height: '100vh' , background: '#EEE'}}>
+      <Main open={isSidebarOpen} sx={{height: '100vh' , background: '#EEE' , padding: '0', textAlign: 'left'}}>
         <DrawerHeader />
           {children}
       </Main>

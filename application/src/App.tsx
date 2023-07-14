@@ -7,6 +7,8 @@ import Graph from './Pages/Graph'
 import React from 'react'
 import { createTheme } from '@mui/material/styles'
 import { ThemeProvider } from '@mui/styles'
+import { Provider } from 'react-redux';
+import { store } from './Store/store'
 
   const theme = createTheme({
   typography: {
@@ -22,12 +24,14 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
+      <Provider store={store}>
        <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Netx />} />
           <Route path="graph" element={<Graph />} />
         </Route>  
       </Routes>
+      </Provider>
     </ThemeProvider>
   )
 }
