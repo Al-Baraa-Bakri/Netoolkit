@@ -14,20 +14,19 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import Logo from '../assets/logo.svg';
 import NetxIcon from '../assets/netx.svg';
 import IpIcon from '../assets/ip.svg'; 
-import ConvertorIcon from '../assets/convertor.svg';
 import { Avatar, Badge, InputBase } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import NotificationsIcon from '@mui/icons-material/Notifications';
+import LogoutIcon from '@mui/icons-material/Logout';
+
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { useSelector , useDispatch } from 'react-redux';
 import {  openSidebar , closeSidebar } from '../Store/store';
+import { useAuth0 } from '@auth0/auth0-react';
 type SidebarItems = {
   title: string, 
   icon: string
@@ -84,7 +83,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   justifyContent: 'flex-end',
 }));
 
-export default function Sidebar({children}) {
+export default function Sidebar({children} : {children: any}) {
   const theme = useTheme();
 
   const SidebarItems: SidebarItems[] = [
@@ -115,6 +114,12 @@ export default function Sidebar({children}) {
     dispatch(closeSidebar())
   };
 
+  const { user , logout } = useAuth0();
+  const handleLogout = () => {
+    logout();
+  }
+
+
   return (
     <Box sx={{ display: 'flex'}}>
       <CssBaseline />
@@ -140,13 +145,16 @@ export default function Sidebar({children}) {
             />
           </Box>
           <Box sx={{ display: 'flex' }}>
+            <IconButton sx={{ color: 'white' }} onClick={() => handleLogout()}>
+              <LogoutIcon />
+            </IconButton>
             <IconButton sx={{ color: 'white' }}>
               <Badge badgeContent={4} color="error">
                 <NotificationsIcon />
               </Badge>
             </IconButton>
             <IconButton sx={{ color: 'white', ml: 1 }}>
-              <Avatar alt="User" src="/avatar.jpg" />
+              <Avatar alt="User" src={user?.picture} />
             </IconButton>
           </Box>
         </Toolbar>
