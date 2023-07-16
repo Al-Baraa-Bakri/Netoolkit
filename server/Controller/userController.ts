@@ -5,7 +5,7 @@ import User from '../model/userModel';
 
 const registerUser = AsyncHandler(async (req: Request , res: Response) => {
     const user = req.body;
-
+    
     const createdUser = await User.create({
     id: user.user_id,
     tenant: user.tenant,
@@ -19,6 +19,11 @@ const registerUser = AsyncHandler(async (req: Request , res: Response) => {
     });
 
     const netoolkitUser = await createdUser.save(); 
+
+    const isUserAlreadyExist = await User.find( {email: user.email}); 
+
+    console.log("THE USER: " , isUserAlreadyExist);
+    
 
     if(netoolkitUser) {
         res.status(201).json({
@@ -39,8 +44,6 @@ const registerUser = AsyncHandler(async (req: Request , res: Response) => {
             msg: "cannot register user "
         })
     }
-
-
 })
 
 export {
