@@ -4,6 +4,7 @@ import connectDB from './DB/connectDB';
 import bodyParser from 'body-parser'; 
 import cors from 'cors';
 import netxRouter from './Router/netxRouter';
+import userRouter from './Router/userRouter';
 dotenv.config();
 
 const app: Express = express();
@@ -16,8 +17,8 @@ app.use(bodyParser.json())
 app.use(cors())
 
 
-
-app.use('/api/netx' , netxRouter)
+app.use('/api/user' , userRouter);
+app.use('/api/netx' , netxRouter);
 
 app.get('/', (req: Request, res: Response) => {
   res.send('Express + TypeScript Server');  
