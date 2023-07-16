@@ -5,6 +5,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import netxRouter from './Router/netxRouter';
 import userRouter from './Router/userRouter';
+import { checkJwt } from './middleware/auth';
 dotenv.config();
 
 const app: Express = express();
@@ -19,6 +20,13 @@ app.use(cors())
 
 app.use('/api/user' , userRouter);
 app.use('/api/netx' , netxRouter);
+app.get('/api/protected' , checkJwt , (req: any , res: Response) => {
+
+
+    res.status(200).json({
+      msg: "You are damn"
+    })
+})
 
 app.get('/', (req: Request, res: Response) => {
   res.send('Express + TypeScript Server');  

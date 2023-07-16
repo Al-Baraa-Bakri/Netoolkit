@@ -23,10 +23,13 @@ import SearchIcon from '@mui/icons-material/Search';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import LogoutIcon from '@mui/icons-material/Logout';
 
+import axios from 'axios';
+
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { useSelector , useDispatch } from 'react-redux';
 import {  openSidebar , closeSidebar } from '../Store/store';
 import { useAuth0 } from '@auth0/auth0-react';
+import { useEffect } from 'react';
 type SidebarItems = {
   title: string, 
   icon: string
@@ -114,7 +117,28 @@ export default function Sidebar({children} : {children: any}) {
     dispatch(closeSidebar())
   };
 
-  const { user , logout } = useAuth0();
+  const { user , isLoading , logout , getAccessTokenSilently } = useAuth0();
+
+  useEffect(() => {
+    const getUserToken = async () => {
+      const token = await getAccessTokenSilently({
+        authorizationParams: {
+          audience: import.meta.env.VITE_AUTH0_INDENTIFIER,
+        },
+      })
+      axios.get('http://localhost:5000/api/protected', {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+        }
+    })
+    .then(response => console.log(response.data))
+    .catch(error => console.error(error));
+    }
+    getUserToken();
+    
+  } , [isLoading])
+
   const handleLogout = () => {
     logout();
   }
