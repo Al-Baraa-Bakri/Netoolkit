@@ -123,13 +123,17 @@ export default function Sidebar({children} : {children: any}) {
         console.log("GET USER TOKEN");
         if(isAuthenticated) {
           try {
-            const token = await getAccessTokenSilently({
-            authorizationParams: {
-              audience: import.meta.env.VITE_AUTH0_INDENTIFIER,
-              scope:'openid'
-            },
-          })
-          } catch (error) {
+            const token = await getAccessTokenSilently()
+
+                axios.get('https://dev-ahuld6ubcjhsdks5.us.auth0.com/authorize', {
+       headers: {
+         'Content-Type': 'application/json',
+         'Authorization': `Bearer ${token}`
+         }
+     })
+     .then(response => console.log(response.data))
+     .catch(error => console.error(error));
+        } catch (error) {
             console.log("ERROR WITH GET TOKEN");
             console.error(error)
           }
@@ -139,14 +143,7 @@ export default function Sidebar({children} : {children: any}) {
         }
 
       
-    //   axios.get('https://dev-ahuld6ubcjhsdks5.us.auth0.com/authorize', {
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //     'Authorization': `Bearer ${token}`
-    //     }
-    // })
-    // .then(response => console.log(response.data))
-    // .catch(error => console.error(error));
+
   }
 
   const handleLogout = () => {
