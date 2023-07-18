@@ -14,6 +14,6 @@ export const checkJwt = expressjwt({
     jwksUri: `https://${authDomain}/.well-known/jwks.json`
   }) as any,
   audience: process.env.AUTH0_INDENTIFIER,
-  issuer: authDomain,
+  issuer: 'https://dev-ahuld6ubcjhsdks5.us.auth0.com/oauth/token',
   algorithms: ['RS256']
 });
