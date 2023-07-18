@@ -124,7 +124,7 @@ export default function Sidebar({children} : {children: any}) {
         if(isAuthenticated) {
           try {
             const token = await getAccessTokenSilently()
-
+            console.log("userToken" , token);
                 axios.get('https://dev-ahuld6ubcjhsdks5.us.auth0.com/authorize', {
        headers: {
          'Content-Type': 'application/json',
