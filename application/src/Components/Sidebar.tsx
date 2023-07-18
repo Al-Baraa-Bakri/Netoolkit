@@ -117,27 +117,37 @@ export default function Sidebar({children} : {children: any}) {
     dispatch(closeSidebar())
   };
 
-  const { user , isLoading , logout , getAccessTokenSilently } = useAuth0();
+  const { user , isLoading , loginWithRedirect , isAuthenticated , logout , getAccessTokenSilently } = useAuth0();
 
-  useEffect(() => {
-    const getUserToken = async () => {
-      const token = await getAccessTokenSilently({
-        authorizationParams: {
-          audience: import.meta.env.VITE_AUTH0_INDENTIFIER,
-        },
-      })
-      axios.get('http://localhost:5000/api/protected', {
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
+  const getUserToken = async () => {
+        console.log("GET USER TOKEN");
+        if(isAuthenticated) {
+          try {
+            const token = await getAccessTokenSilently({
+            authorizationParams: {
+              audience: import.meta.env.VITE_AUTH0_INDENTIFIER,
+              scope:'openid'
+            },
+          })
+          } catch (error) {
+            console.log("ERROR WITH GET TOKEN");
+            console.error(error)
+          }
         }
-    })
-    .then(response => console.log(response.data))
-    .catch(error => console.error(error));
-    }
-    getUserToken();
-    
-  } , [isLoading])
+        else {
+          loginWithRedirect()
+        }
+
+      
+    //   axios.get('https://dev-ahuld6ubcjhsdks5.us.auth0.com/authorize', {
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //     'Authorization': `Bearer ${token}`
+    //     }
+    // })
+    // .then(response => console.log(response.data))
+    // .catch(error => console.error(error));
+  }
 
   const handleLogout = () => {
     logout();
@@ -158,7 +168,7 @@ export default function Sidebar({children} : {children: any}) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
+          <Typography variant="h6" noWrap component="div" onClick={() => getUserToken()}>
             Persistent drawer
           </Typography>
           <Box sx={{ paddingLeft: '40px' ,  flex: 1 , alignItems: 'center' , display: { xs: 'none', md: 'flex' } }}>
