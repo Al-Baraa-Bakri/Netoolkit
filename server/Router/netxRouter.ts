@@ -1,7 +1,7 @@
 import express, { Express, Request, Response } from 'express';
-import { getAllProjects } from '../Controller/netxController';
+import { createProject, getAllProjects } from '../Controller/netxController';
 const router = express.Router();
 
-router.route('/').get(getAllProjects); 
+router.route('/').get(getAllProjects).post(createProject); 
 
 export default router;

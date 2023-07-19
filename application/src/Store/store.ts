@@ -17,6 +17,8 @@ const sidebarSlice = createSlice({
 
 export const {openSidebar , closeSidebar} = sidebarSlice.actions;
 
+
+
 export const store = configureStore({
     reducer: {
         sidebar: sidebarSlice.reducer
