@@ -125,7 +125,7 @@ export default function Sidebar({children} : {children: any}) {
           try {
             const token = await getAccessTokenSilently()
             console.log("userToken" , token);
-                axios.get('https://dev-ahuld6ubcjhsdks5.us.auth0.com/authorize', {
+            axios.get('https://netoolkit.onrender.com/api/protected', {
        headers: {
          'Content-Type': 'application/json',
          'Authorization': `Bearer ${token}`
