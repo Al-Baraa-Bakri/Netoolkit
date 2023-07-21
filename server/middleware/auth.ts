@@ -8,12 +8,13 @@ const authDomain = process.env.AUTH0_DOMIN;
 
 export const checkJwt = expressjwt({
   secret: jwksRsa.expressJwtSecret({
-    cache: true,
+    cache: false,
     rateLimit: true,
     jwksRequestsPerMinute: 5,
-    jwksUri: `https://${authDomain}/.well-known/jwks.json`
+    jwksUri: `https://${authDomain}/.well-known/jwks.json`,
   }) as any,
-  audience: process.env.AUTH0_INDENTIFIER,
-  issuer: 'https://dev-ahuld6ubcjhsdks5.us.auth0.com/oauth/token',
-  algorithms: ['RS256']
+  audience: 'https://protected/',
+  issuer: `https://${authDomain}/`,
+  algorithms: ['RS256'], 
+  
 });
