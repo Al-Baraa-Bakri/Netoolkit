@@ -20,11 +20,12 @@ app.use(cors())
 
 app.use('/api/user' , userRouter);
 app.use('/api/netx' , netxRouter);
-app.get('/api/protected' , checkJwt , (req: any , res: Response) => {
+app.post('/api/protected' , checkJwt , (req: any , res: Response) => {
 
-
+  console.log("USER" , req.body.email);
+  
     res.status(200).json({
-      msg: "You are damn"
+      msg: "You are damn", 
     })
 })
 

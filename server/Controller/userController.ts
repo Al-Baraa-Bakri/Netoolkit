@@ -22,7 +22,11 @@ const registerUser = AsyncHandler(async (req: Request , res: Response) => {
 
     const isUserAlreadyExist = await User.find( {email: user.email}); 
 
-    console.log("THE USER: " , isUserAlreadyExist);
+    if(isUserAlreadyExist) {
+        res.status(400).json({
+            msg: "User Already Exist"
+        })
+    }
     
 
     if(netoolkitUser) {
