@@ -8,13 +8,7 @@ const AuthLayer = ({children} : {children: any}) => {
   const [isAuthLoading , setIsAuthLoading] = useState<boolean>(false);
   useEffect(() => {
     setIsAuthLoading(true);
-
-    console.log("LOADING" , isLoading);
-    console.log("AUTHED" , isAuthenticated);
-    console.log(user);
-    
     if(isLoading) return
-
     if(!isAuthenticated && !isLoading) {
         loginWithRedirect();
     }
@@ -24,7 +18,7 @@ const AuthLayer = ({children} : {children: any}) => {
 
   } , [isLoading , isAuthenticated])
   return (  
-    isAuthLoading ? (
+    isLoading ? (
     <div style={{backgroundColor: 'white'  , display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
       <img src={LoadingLogo} alt="Logo loading" />
     </div>) 

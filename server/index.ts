@@ -6,6 +6,9 @@ import cors from 'cors';
 import netxRouter from './Router/netxRouter';
 import userRouter from './Router/userRouter';
 import { checkJwt } from './middleware/auth';
+import ip from 'ip';
+import { calculateCIDRPrefix , calculateSubnetMask  } from 'ip-subnet-calculator';
+
 dotenv.config();
 
 const app: Express = express();
@@ -21,12 +24,27 @@ app.use(cors())
 app.use('/api/user' , userRouter);
 app.use('/api/netx' , netxRouter);
 app.post('/api/protected' , checkJwt , (req: any , res: Response) => {
-
-  console.log("USER" , req.body.email);
   
     res.status(200).json({
       msg: "You are damn", 
     })
+})
+
+app.post('/api/ipSubnet' , (req: Request , res: Response) => {
+const { cidrSubnet } = req.body; 
+
+if(!cidrSubnet) {
+  return res.status(401).json({
+    msg: "CidrSubnet not found"
+  })
+}
+const subResult = ip.cidrSubnet(cidrSubnet)
+
+res.status(201).json({
+  subResult
+})
+
+
 })
 
 app.get('/', (req: Request, res: Response) => {

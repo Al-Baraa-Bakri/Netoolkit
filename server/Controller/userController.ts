@@ -5,6 +5,7 @@ import User from '../model/userModel';
 
 const registerUser = AsyncHandler(async (req: Request , res: Response) => {
     const user = req.body;
+    console.log("REEEEEGEEEEST");
     
     const createdUser = await User.create({
     id: user.user_id,

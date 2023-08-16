@@ -6,23 +6,37 @@ const roomSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'NetxFloor'
     }, 
-    name: {
-        type: String
+    roomName: {
+        type: String, 
+        // required: true,
     },
     networkPoints: {
+        type: Number, 
+        // required: true,
+        min: 0
+    }, 
+    count: {
         type: Number
     }
 })
 
 const floorSchema = new mongoose.Schema({
     building: {
-        type: mongoose.Schema.Types.ObjectId, 
+        type: [mongoose.Schema.Types.ObjectId], 
         ref: 'NetxBuilding',
     }, 
-    rooms: [roomSchema],
-    name: {
+    floorName: {
         type: String ,
-        required : true,
+        // required : true,
+    }, 
+    isCore: {
+        type: Boolean, 
+        // required : true,
+    }, 
+    rooms: {
+        type: [mongoose.Schema.Types.ObjectId],
+        // required: true,
+        ref: 'NetxRoom',
     }
 })
 
@@ -31,15 +45,27 @@ const floorSchema = new mongoose.Schema({
 const buildingSchema = new mongoose.Schema({
     project: {
         type : mongoose.Schema.Types.ObjectId,
-        required : true, 
+        // required : true, 
         ref : "NetxProject"
     }, 
-    name: {
+    buildingName: {
         type: String, 
         required : true, 
     }, 
-    floors: [floorSchema], 
-
+    floors: {
+        type: [mongoose.Schema.Types.ObjectId],
+        // required: true,
+        ref: 'NetxFloor',
+    }, 
+    isCore: {
+        type: Boolean
+    },
+    isRouter: {
+        type: Boolean
+    }, 
+    servers: {
+        type: [String]
+    }
 })
 
 
@@ -48,14 +74,19 @@ const buildingSchema = new mongoose.Schema({
 const projectSchema = new mongoose.Schema({
     user: {
         type : mongoose.Schema.Types.ObjectId,
-        required : true, 
+        // required : true, 
         ref : "User"
     }, 
-    name: {
+    projectName: {
         type: String, 
         required : true, 
     }, 
-    buildings: [buildingSchema]
+    buildings: {
+        type: [mongoose.Schema.Types.ObjectId],
+        // required: true,
+        ref: 'NetxBuilding',
+        default: []
+    }
 })
 
 

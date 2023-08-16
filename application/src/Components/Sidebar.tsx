@@ -4,6 +4,7 @@ import { closeSidebar } from '../Store/store'
 import { useSelector,  useDispatch } from 'react-redux'
 import Logo from '../assets/logo.svg';
 import NetxIcon from '../assets/netx.svg';
+import { useAuth0 } from '@auth0/auth0-react'
 const sidebarItms: sidebarItemProps[] = [
   {
     title: 'Netx',
@@ -25,12 +26,16 @@ const sidebarItms: sidebarItemProps[] = [
 const Sidebar = () => {
   const isSidebarOpen = useSelector((state: any) => state.sidebar.isSidebarOpen);
   const theme = useSelector((state: any) => state.theme.theme);
+  const { logout } = useAuth0();
   
 
   const dispatch = useDispatch();
 
   const handleCloseSidebar = () => {
     dispatch(closeSidebar());
+  }
+  const handleLogout = () => {
+    logout()
   }
 
   return (
@@ -53,7 +58,9 @@ const Sidebar = () => {
         </div>
         <div className='flex flex-col gap-6'>
           <SidebarItem title='Settings' icon={NetxIcon} href='/Settings' />
-          <SidebarItem title='Log out' icon={NetxIcon} />
+          <div onClick={() => handleLogout()}>
+            <SidebarItem title='Log out' icon={NetxIcon} />
+          </div>
         </div>
       </div>
     </div>

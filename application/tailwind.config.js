@@ -7,9 +7,13 @@ export default {
         primary: "#A162F7",
         "primary-light": "#E0E4E7",
         "primary-dark": "#242731",
+        "title-dark": "#E0E4E7",
+        "title-light": "#242731",
         gray: "#A4A5A6",
         "gray-light": "#E0E4E7",
         "gray-dark": "#5F6165",
+        "app-background-light": "#F5F4F6",
+        "app-background-dark": "#1F2128",
         error: "#FF6370",
         warning: "#FF764C",
         success: "#70CF97",
@@ -31,6 +35,12 @@ export default {
             "background-dark": "#1F2128",
           },
         },
+        table: {
+          "title-light": "#72767C",
+          "title-dark": "#7C7C8D",
+          "text-light": "#242731",
+          "text-dark": "#E0E4E7",
+        },
       },
       transitionProperty: {
         width: "width",
@@ -38,5 +48,5 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [require("tailwindcss-scrollbar")],
 };

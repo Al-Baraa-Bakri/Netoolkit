@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export type sidebarItemProps = {
   title: string, 
   icon: string, 
-  href?: string
+  href?: string,
 } 
 
 const SidebarItem = (props : sidebarItemProps) => {
