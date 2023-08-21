@@ -7,6 +7,7 @@ import ReactFlow, {
   Controls,
   MiniMap,
   Background,
+  Panel,
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 
@@ -35,6 +36,7 @@ import SwitchNode from './Nodes/SwitchNode';
 import Rectangle from './Nodes/Digram/Rectangle';
 import Square from './Nodes/Digram/Circle';
 import Circle from './Nodes/Digram/Circle';
+import { exportComponentAsJPEG } from 'react-component-export-image';
 
 
 const edgeOptions = {
@@ -82,7 +84,7 @@ const DnDFlow = () => {
   const [reactFlowInstance, setReactFlowInstance] = useState(null);
   const [resizableVisible, setResizableVisible] = useState(true);
   const onConnect = useCallback((params) => setEdges((eds) => addEdge(params, eds)), []);
-
+  const graphRef = useRef(null); 
   const onDragOver = useCallback((event) => {
     event.preventDefault();
     event.dataTransfer.dropEffect = 'move';
@@ -182,6 +184,9 @@ const DnDFlow = () => {
         </div>
         <Sidebar />
       </ReactFlowProvider>
+      <button onClick={() => exportComponentAsJPEG(reactFlowWrapper)} className='absolute py-2 bg-primary w-[80px] text-white rounded-md'>
+        Save
+      </button>
     </div>
   );
 };

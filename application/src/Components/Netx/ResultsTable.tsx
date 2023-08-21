@@ -50,7 +50,7 @@ const ResultsTable = ({project , buildings , projectResults} : any) => {
             Object.keys(RESULTS).map((r , i) => {
               return (
                 <div className={`flex w-full items-center py-6 px-4 ${i === 0 || i % 2 === 0 ? 'bg-white' : 'bg-[#F7F9FD]'}`}> 
-                    <span className='flex-1 font-medium'> {r} </span>
+                    <span className='flex-1 font-medium '> {r} </span>
                     <div className='w-[70%] gap-24 flex items-center  font-medium'>
                       {
                         Object.keys(RESULTS[r]).map((k: any) => {

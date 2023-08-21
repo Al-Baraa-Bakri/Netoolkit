@@ -43,7 +43,7 @@ const NetxCreateHeader = ({toggleModal , handleProjectName}: any) => {
           />
         </div>
         <div className='flex items-center justify-center gap-2'>
-          <button onClick={() => toggleModal()} className='flex py-5 px-4 w-26 h-[12px] rounded-md items-center justify-center bg-primary text-white text-base font-medium'>
+          <button onClick={() => toggleModal()} className='flex py-5 px-4 w-[192px] h-[12px] rounded-[5px] items-center justify-center bg-primary text-white text-base font-medium'>
             Add A Building
         </button>
         {

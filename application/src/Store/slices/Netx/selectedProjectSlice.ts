@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axiosInstance from "../../../Logic/axios";
+import { stat } from "fs";
 
 
 
@@ -75,6 +76,12 @@ const selectedProjectSlice = createSlice({
             })
             return state;
         } , 
+
+        duplicateBuilding: (state , action) => {
+            const { buildingId } = action.payload;             
+            const building = state.buildings.filter((b , i) => i == buildingId)[0];
+            state.buildings.push({...building , id: state.buildings.length + 1});
+        },
         initToUpdate: (state, action) => {
             console.log(action.payload);
             
@@ -83,6 +90,6 @@ const selectedProjectSlice = createSlice({
     }  
 })
 
-export const {setName , clearState , addBuilding , deleteBuilding , updateBuilding , initToUpdate} = selectedProjectSlice.actions; 
+export const {setName , clearState , addBuilding , deleteBuilding , updateBuilding , initToUpdate , duplicateBuilding} = selectedProjectSlice.actions; 
 
 export default selectedProjectSlice; 

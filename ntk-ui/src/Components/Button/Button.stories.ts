@@ -32,7 +32,7 @@ type Story = StoryObj<typeof Button>;
 export const Primary: Story = {
     args: {
         color: 'primary', 
-        label: 'Our Button', 
+        label: 'Netoolkit Button', 
 
     }, 
 }
@@ -40,8 +40,8 @@ export const Primary: Story = {
 export const Secondary: Story = {
     args: {
         color: 'secondary', 
-        label: 'Our Button',
-
+        label: 'Second',
+        size: 'small'
     }, 
 
 }
@@ -49,8 +49,8 @@ export const Secondary: Story = {
 export const Danger: Story = {
     args: {
         color: 'danger', 
-        label: 'Our Button', 
-
+        label: 'Delete', 
+        variant: 'outlined', 
     }, 
 
 }

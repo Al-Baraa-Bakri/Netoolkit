@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import NetxCreateHeader from '../../Components/Netx/NetxCreateHeader';
 import CreateBuildingModal from '../../Components/Netx/CreateBuildingModal';
-import { clearState, initToUpdate, setName } from '../../Store/slices/Netx/selectedProjectSlice';
+import { clearState, duplicateBuilding, initToUpdate, setName } from '../../Store/slices/Netx/selectedProjectSlice';
 import { deleteBuilding } from '../../Store/slices/Netx/selectedProjectSlice';
 import { clearBuildingState, initStateToUpdate } from '../../Store/slices/Netx/createBuildingSlice';
 import UpdateBuildingModal from '../../Components/Netx/updateBuildingModal';
@@ -125,6 +125,13 @@ const CreateNetxProject = ({update} : any) => {
       toast.error(toast.msg);
     }
   }
+
+  const handleDuplicateBuilding = (buildingId: any) => {
+    dispatch(duplicateBuilding({
+      buildingId
+    }));
+  }
+
   return (
     <main className={` p-6 ${theme==='light' ? 'bg-app-background-light' : 'bg-app-background-dark'}  h-screen flex flex-col gap-12`}>
         <NetxCreateHeader toggleModal={toggleModal} projectName={projectName} handleProjectName={handleProjectName}/>
@@ -169,6 +176,9 @@ const CreateNetxProject = ({update} : any) => {
                       <td className={`${theme==='light' ? 'text-table-text-light' : 'text-table-text-dark'} text-sm font-medium px-6 py-3 flex items-center gap-4`}>
                           <button onClick={() => handleUpdateBuilding(i)} className='flex py-5 px-4 w-26 h-[12px] rounded-md items-center justify-center bg-primary text-white text-base font-medium'>
                             Update
+                          </button>
+                          <button onClick={() => handleDuplicateBuilding(i)} className='bg-gray flex py-5 px-4 w-26 h-[12px] rounded-md items-center justify-center  text-white text-base font-medium'>
+                            Duplicate
                           </button>
                           <button onClick={() => handleDeleteBuilding(i)} className='bg-error flex py-5 px-4 w-26 h-[12px] rounded-md items-center justify-center  text-white text-base font-medium'>
                               Delete

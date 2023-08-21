@@ -10,8 +10,9 @@ const NetxHeader = () => {
             Netx
         </h1>
         <Link to={'create'}>
-        <button className='flex py-5 px-4 w-26 h-[12px] rounded-md items-center justify-center bg-primary text-white text-base font-medium'>
-            Add Project
+          
+        <button className='flex py-5 px-4 w-[192px] h-[12px] rounded-[5px] items-center justify-center bg-primary text-white text-base font-medium'>
+            <span>Add Project</span>
         </button>
         </Link>
     </header>

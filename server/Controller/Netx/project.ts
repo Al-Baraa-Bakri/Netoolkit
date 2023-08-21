@@ -45,14 +45,12 @@ async function createProject(req: Request, res: Response) {
         floor = {...floor , _id: createdFloor._id}
         floor.rooms.map(async(room: any) => {
 
-          for(let i = 0 ; i < room.count ; i++) {
             await axios.post('http://localhost:5000/api/netx/room' , {
               roomName: room.roomName, 
               networkPoints: room.networkPoints, 
               floorId: floor._id,
               count: room.count
             })
-          }
         })
       })
     })
@@ -142,20 +140,15 @@ async function getUserProjects(req: Request , res: Response) {
         const user : any = await User.find({
             email
         })
-        if(!user) {
+        if(user.length === 0) {
             return res.status(501).json({
                 msg: "No User"
             })
         }
-
         const projects = await NetxProject.find({user: user[0]._id});
-        console.log(user);
-        
         res.status(200).json({
             projects
         })
-        console.log("projects" , projects);
-        
     } catch (error) {
         console.log(error);
         res.status(400).json({
