@@ -1,0 +1,21 @@
+.node {
+}
+
+.node :global .react-flow__resize-control.handle {
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+}
+
+.rotateHandle {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #9794945c;
+    left: 50%;
+    top: 0px;
+    border-radius: 100%;
+    transform: translate(-50%, -50%);
+    cursor: alias;
+}
+
